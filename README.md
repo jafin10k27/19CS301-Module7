@@ -1,135 +1,206 @@
 # 19CS301-Module7
-EX: 7.1 RECURSION
-### Aim: To Write a Python Program to find the sum of all digits in a number using recursion
+
+## EX: 7.1 RECURSION
+
+### Aim: To write a Python program to find whether the given number is prime or not using recursive function
+
 ### Algorithm:
-STEP 1: Start.
+1.Define a recursive function prime(n, i=2).
 
-STEP 2: Define a function.
+2.If n <= 2, return result based on whether n == 2.
 
-STEP 3: Create a base case for termination of the function. STEP 4: Create a recursive case to calculate the result.
+3.If n % i == 0, return "not a prime number".
 
-STEP 5: Print the result. STEP 6: Stop.
+4.If i * i > n, return "prime number".
+
+5.Else, call prime(n, i + 1).
+
+6.Take user input and call the function.
+
+7.Display the result.
 
 ### Program:
 ```
-def sum_digit(n):
-       if n<=0:
-            return 0
-       else:
-            return n%10+sum_digit(n//10)
-n = int(input())
-sum = sum_digit(n)
-print(sum)
-```
-### Output:
-![image](https://github.com/user-attachments/assets/50acc657-266e-46e6-ab17-10358494e26c)
-
-### Result: Thus, the given program is implemented and executed successfully .
- 
-
-EX: 7.2 TYPES OF RECURSIONS
-### Aim: To Write a Python Program to find the sum of all digits in a number using recursion
-### Algorithm:
-STEP 1: Start.
-
-STEP 2: Define a function.
-
-STEP 3: Create a recursive case in the first line of function for head recursion.
-
-STEP 4: Print the result.
-
-STEP 5: Stop.
-### Program:
-```
-def fun(n):
-     if (n >0):
-          fun(n - 2)
-      print(n-1, end=" ")
-x = int(input())
-if(x%2==0):
-     fun(x)
-else:
-     fun(x+1)
+## Reg no:212223020018
+## Name: Mohamed Jafin S
+def prime(n,i=2):
+    if n<=2:
+        return (f'{a} is a Prime number') if n==2 else(f'{a} is not a Prime number')
+    if n%i==0:
+        return (f'{a} is not a Prime number')
+    if i*i>n:
+        return (f'{a} is a Prime number')
+    return prime(n,i+1)
+a=int(input())
+print(prime(a))
 
 ```
 ### Output:
-![image](https://github.com/user-attachments/assets/c4d6416f-d333-49c1-9dd5-0f774cdabb03)
+![image](https://github.com/user-attachments/assets/25da5d96-64b4-405e-a225-a88c49b59b5f)
 
-###Result: Thus, the given program is implemented and executed successfully.
+### Result:
+Thus, the given program is implemented and executed successfully .
  
 
+## EX: 7.2 TYPES OF RECURSIONS
 
-EX: 7.3 TAYLOR SERIES
-
-###Aim: To python program to evaluate the series using recursion by collecting the x and n values from the user.
-### ALGORITHM:
-STEP 1: Start.
-
-STEP 2: Create a variable x and n.
-
-STEP 3: Get the values of x and n from user.
-
-STEP 4: Create a base case and recursive case to calculate the result.
-
-STEP 5: Print the result.
-
-STEP 6: Stop.
-### Program:
-```
-def series(x,n):
-         if n==0:
-            return 1
-         else:
-            return x**n/n+series(x,n-1)
-x = int(input())
-n = int(input())
-print(series(x,n))
-```
-### Output:
-![image](https://github.com/user-attachments/assets/1d00b1a4-cecb-466f-8593-805f00d27461)
-
- 
-### Result: Thus, the given program is implemented and executed successfully .
- 
-
-EX: 7.4 Solve by recursion relation
-
-### Aim: To Write a Python Program to find whether a string is a palindrome or not using recursion
+### Aim: Write a Python program to find an element in a sorted list using tree recursion. If found print the position in the list otherwise print 0  (Hint: Binary search )
 
 ### Algorithm:
-STEP 1: Start.
+1.Define a recursive function binary_search(l, low, high, elem).
 
-STEP 2: Define a function.
+2.Calculate mid index.
 
-STEP 3: Create a base case and recursive case to calculate the result.
+3.If l[mid] == elem, return mid.
 
-STEP 4: Create a variable and get input from user.
+4.If l[mid] > elem, search in the left half.
 
-STEP 5 : Call the function.
+5.Else, search in the right half.
 
-STEP 6: Print the result.
+6.If element not found, return -1.
 
-STEP 7: Stop.
+7.Take input list, sort it, and search using binary search.
+
+8.If result is -1, print 0; else, print position (index + 1).
 
 ### Program:
 ```
-def is_palindrome(word):
-      if len(word)<1:
-            return True
+## Reg no:212223020018
+## Name:Mohamed Jafin S
+def binary_search(l, low, high, elem):
+   if high >= low:
+      mid = (high + low) // 2
+      if l[mid] == elem:
+         return mid
+      elif l[mid] > elem:
+         return binary_search(l, low, mid - 1, elem)
       else:
-            if word[0]==word[-1]:
-                 return is_palindrome(word[1:-1])
-             else:
-                  return False
-word = str(input())
-if is_palindrome(word)==True:
-        print("String is a palindrome")
-else:
-        print("String is not a palindrome")
+         return binary_search(l, mid + 1, high, elem)
+   else:
+      return -1
+
+l = [ ]
+n=int(input())
+for i in range(n):
+    x=int(input())
+    l.append(x)
+num = int(input())
+l.sort()
+print("The sorted list is")
+print(l)
+print(binary_search(l,0,len(l)-1,num)+1)
 ```
 ### Output:
-![image](https://github.com/user-attachments/assets/d30ef836-1901-448a-a146-dc905fdc3198)
+![image](https://github.com/user-attachments/assets/5b25e57c-5395-4bba-84b7-5ad278c16030)
 
-### Result: Thus, the given program is implemented and executed successfully .
+### Result:
+Thus, the given program is implemented and executed successfully.
  
 
+
+## EX: 7.3 TAYLOR SERIES
+
+### Aim: To  write a python program to evaluate the series using recursion: 1+x+x^2+x^3+.....+x^n    by collecting the x and n values from the user.
+
+### ALGORITHM:
+1.Read values of x and n from user.
+
+2.Define a recursive function fun(n, x):
+
+3.If n == 0, return 1.
+
+4.Else, return xⁿ + fun(n-1, x).
+
+5.Call the function and print the result.
+
+
+### Program:
+```
+## Reg no:212223020018
+## Name:Mohamed Jafin S
+x=int(input())
+n=int(input())
+def fun(n,x):
+    if n==0:
+       return 1
+    else:
+       return x**n + fun(n-1,x)
+print(fun(n,x))
+```
+### Output:
+![image](https://github.com/user-attachments/assets/41bc545f-276f-4247-88f5-d5460a75a886)
+
+### Result: 
+Thus, the given program is implemented and executed successfully .
+ 
+
+## EX: 7.4 Solve by recursion relation
+
+### Aim: Write a program to determine the sum of all elements in the list using recursion
+
+### Algorithm:
+1.Take input for list size and elements.
+
+2.Define recursive function sum_list(l, length):
+
+3.If length == 0, return l[0].
+
+4.Else, return l[length] + sum_list(l, length - 1).
+
+5.Call the function with length = n - 1 and print result.
+
+### Program:
+```
+## Reg no:212223020018
+## Name:Mohamed Jafin S
+def sum_list(l,length):
+    if length==0:
+       return l[0]
+    else:
+       return l[length]+sum_list(l,length-1) 
+l=[]
+n=int(input())
+for i in range(n):
+    x=int(input())
+    l.append(x)
+
+```
+### Output:
+![image](https://github.com/user-attachments/assets/b874df87-2b83-4f62-ba62-ad78990c5dbe)
+
+### Result: 
+Thus, the given program is implemented and executed successfully .
+
+ ## EX: 7.5 SEB
+
+### Aim: To Write a Python Program to convert a decimal number to a binary number using tail recursion.
+
+### Algorithm:
+1.Define a function decimal_to_binary_tail(n, result):
+
+2.If n == 0, return result (or "0" if empty).
+
+3.Else, prepend n % 2 to result and call function recursively with n // 2.
+
+4.Call the function with user input and initial result="".
+
+5.Print the binary result.
+
+### Program:
+```
+## Reg no:212223020018
+## Name: Mohamed Jafin S
+def decimal_binary(n):
+    if n==0:
+        return 0
+    else:
+        return (n%2)+10*decimal_binary(int(n/2))
+n=int(input())
+print(decimal_binary(n))
+
+```
+### Output:
+![image](https://github.com/user-attachments/assets/1fb44485-5a06-472f-9069-efe1447b86a1)
+
+### Result: 
+Thus, the given program is implemented and executed successfully .
